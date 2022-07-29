@@ -11,6 +11,26 @@ It provides APIs to
 - generate/invalidate token which will expire in a given time
 - check the roles of a given token 
 
+## Run
+```
+mvn clean package
+```
+```aidl
+ java -jar .\target\JAuth-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+
+## Test
+use postman/curl to send Http request, e.g.,
+
+```aidl
+curl -XPOST http://localhost:9090/api/role -d '{
+    "requestId": "dasrrtewty3543t432g34",
+    "roleName": "role88"
+}'
+```
+more requests can be found in each API document
+
 ## API
 
 requests are in json format. All API use Http Post/Delete, **No GET Action**. input parameters are in HTTP Body,including a requestId and other input parameters. 
@@ -248,27 +268,5 @@ RoleDao can have different Implementations, e.g., LocalRoleDao and
 in LocalRoleDao, a concurrent hash map is used to store User information. All data is in memory.
 
 If we introduce mysql to store User information, just change RoleDao from LocalRoleDao to MysqlRoleDao 
-
-
-
-## Run
-```
-mvn clean package
-```
-```aidl
-java -jar .\target\JAuth-1.0-SNAPSHOT.jar
-```
-
-
-## Test
-use postman/curl to send Http request
-
-```aidl
-curl -XPOST http://localhost:9090/api/role -d '{
-    "requestId": "dasrrtewty3543t432g34",
-    "roleName": "role88"
-}'
-```
-
 
 
